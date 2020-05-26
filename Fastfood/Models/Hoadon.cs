@@ -9,7 +9,7 @@ namespace Fastfood.Models
         {
             Chitiethd = new HashSet<Chitiethd>();
         }
-
+        //ok
         public int UserId { get; set; }
         public DateTime Ngaylap { get; set; }
         public decimal Tongtien { get; set; }
