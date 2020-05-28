@@ -26,7 +26,7 @@ namespace Fastfood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMvc();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
 
             //Fetching Connection string from APPSETTINGS.JSON  
             var ConnectionString = Configuration.GetConnectionString("FastfoodString");
@@ -60,6 +60,14 @@ namespace Fastfood
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
             });
         }
     }
